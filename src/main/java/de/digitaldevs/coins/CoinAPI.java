@@ -1,4 +1,6 @@
 package de.digitaldevs.coins;
 
-public class CoinAPI {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class CoinAPI extends JavaPlugin {
 }
