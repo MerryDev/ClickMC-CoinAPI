@@ -7,4 +7,8 @@ public class CoinAPI extends JavaPlugin {
     @Override
     public void onEnable() {
     }
+
+    public void onDisable() {
+
+    }
 }
