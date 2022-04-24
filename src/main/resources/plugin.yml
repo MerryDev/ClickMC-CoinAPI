@@ -6,4 +6,5 @@ authors:
   - waddlespam
 main: de.digitaldevs.playerapi.PlayerAPI
 commands:
-  - coins
+  coins:
+    description: Show your coins
