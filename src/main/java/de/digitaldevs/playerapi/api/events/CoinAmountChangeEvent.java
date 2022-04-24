@@ -1,6 +1,6 @@
-package de.digitaldevs.playerapi.events;
+package de.digitaldevs.playerapi.api.events;
 
-import de.digitaldevs.playerapi.player.GamePlayer;
+import de.digitaldevs.playerapi.api.player.GamePlayer;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;

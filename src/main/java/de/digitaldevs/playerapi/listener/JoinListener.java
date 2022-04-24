@@ -2,7 +2,7 @@ package de.digitaldevs.playerapi.listener;
 
 import com.mojang.authlib.GameProfile;
 import de.digitaldevs.playerapi.PlayerAPI;
-import de.digitaldevs.playerapi.player.GamePlayerImpl;
+import de.digitaldevs.playerapi.api.player.GamePlayerImpl;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

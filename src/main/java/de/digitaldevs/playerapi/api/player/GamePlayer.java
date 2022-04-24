@@ -1,4 +1,4 @@
-package de.digitaldevs.playerapi.player;
+package de.digitaldevs.playerapi.api.player;
 
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;

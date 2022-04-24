@@ -1,9 +1,9 @@
-package de.digitaldevs.playerapi.player;
+package de.digitaldevs.playerapi.api.player;
 
 import com.mojang.authlib.GameProfile;
 import de.digitaldevs.database.mysql.MySQLHandler;
 import de.digitaldevs.playerapi.PlayerAPI;
-import de.digitaldevs.playerapi.events.CoinAmountChangeEvent;
+import de.digitaldevs.playerapi.api.events.CoinAmountChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

@@ -1,6 +1,6 @@
 package de.digitaldevs.playerapi.api;
 
-import de.digitaldevs.playerapi.player.GamePlayer;
+import de.digitaldevs.playerapi.api.player.GamePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
