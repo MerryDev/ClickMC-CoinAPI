@@ -15,4 +15,10 @@ public interface GamePlayer {
     void addCoins(int addAmount);
 
     void removeCoins(int removeAmount);
+
+    void register();
+
+    void unregister();
+
+    boolean isRegistered();
 }
