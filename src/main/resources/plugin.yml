@@ -1,0 +1,8 @@
+name: ${project.name}
+description: ${project.description}
+authors:
+  - MerryChrismas
+  - waddlespam
+main: de.digitaldevs.playerapi.PlayerAPI
+commands:
+  - coins
