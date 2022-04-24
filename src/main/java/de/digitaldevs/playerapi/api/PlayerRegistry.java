@@ -11,15 +11,19 @@ public class PlayerRegistry {
 
     private static final PlayerRegistry playerRegistry = new PlayerRegistry();
 
-    private PlayerRegistry() { this.gamePlayers = new LinkedList<>(); }
+    private PlayerRegistry() {
+        this.gamePlayers = new LinkedList<>();
+    }
 
-    public static final synchronized PlayerRegistry getInstance() {
+    public static synchronized PlayerRegistry getInstance() {
         return playerRegistry;
     }
 
     private final List<GamePlayer> gamePlayers;
 
-
+    public void registerGamePlayer(@NotNull final GamePlayer gamePlayer) {
+        this.gamePlayers.add(gamePlayer);
+    }
 
     public GamePlayer getPlayerByName(@NotNull final String playerName) {
         return null;
@@ -27,5 +31,9 @@ public class PlayerRegistry {
 
     public GamePlayer getPlayerByUUID(@NotNull final UUID uuid) {
         return null;
+    }
+
+    public boolean isRegistered() {
+        return false;
     }
 }
