@@ -36,7 +36,7 @@ public class GamePlayerImpl implements GamePlayer {
         final MySQLHandler handler = this.plugin.getMySQLHandler();
         final AtomicInteger amount = new AtomicInteger(0);
 
-        handler.createBuilder("").addParameters(this.getUUID()).queryAsync(result -> {
+        handler.createBuilder("SELECT amount FROM coins WHERE uuid=?;").addParameters(this.getUUID()).queryAsync(result -> {
             if (result == null) return;
             try {
                 int coins = result.getInt("coins");
