@@ -1,4 +1,4 @@
-package de.digitaldevs.coins.command;
+package de.digitaldevs.playerapi.command;
 
 
 import org.bukkit.command.Command;

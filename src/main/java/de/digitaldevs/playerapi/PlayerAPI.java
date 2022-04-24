@@ -1,8 +1,8 @@
-package de.digitaldevs.coins;
+package de.digitaldevs.playerapi;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class CoinAPI extends JavaPlugin {
+public class PlayerAPI extends JavaPlugin {
 
     @Override
     public void onEnable() {
