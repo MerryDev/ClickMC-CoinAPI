@@ -96,7 +96,7 @@
     <repositories>
         <repository>
             <id>github</id>
-            <url>https://github.com/MerryDev/ClickMC-CoinAPI</url>
+            <url>https://github.com/MerryDev/DigitalDevs-DatabaseUtil</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
