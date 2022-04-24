@@ -1,4 +1,4 @@
-package de.digitaldevs.coins.utils;
+package de.digitaldevs.playerapi.utils;
 
 import de.digitaldevs.core.config.Config;
 import lombok.SneakyThrows;
@@ -7,7 +7,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.io.IOException;
 
 public class MySQLConfig implements Config {
 
