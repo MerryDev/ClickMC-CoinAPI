@@ -25,6 +25,10 @@ public class PlayerRegistry {
         this.gamePlayers.add(gamePlayer);
     }
 
+    public void unregisterGamePlayer(@NotNull final GamePlayer gamePlayer) {
+        return;
+    }
+
     public GamePlayer getPlayerByName(@NotNull final String playerName) {
         return null;
     }
@@ -33,7 +37,9 @@ public class PlayerRegistry {
         return null;
     }
 
-    public boolean isRegistered() {
+    public boolean isRegistered(@NotNull GamePlayer gamePlayer) {
         return false;
     }
+
+
 }
