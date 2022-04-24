@@ -8,6 +8,9 @@
     <artifactId>coinapi</artifactId>
     <version>1.0</version>
 
+    <name>PlayerAPI</name>
+    <description>API for handling players</description>
+
     <scm>
         <url>https://github.com/MerryDev/ClickMC-CoinAPI</url>
         <connection>scm:git:git://github.com/ClickMC-CoinAPI</connection>
