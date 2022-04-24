@@ -6,8 +6,6 @@ public interface GamePlayer {
 
     UUID getUUID();
 
-    UUID getUUIDAsync();
-
     int getCoins();
 
     int getCoinsAsync();
