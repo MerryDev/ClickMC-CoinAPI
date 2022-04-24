@@ -93,25 +93,6 @@
         <finalName>${project.artifactId}-${project.version}.${buildNumber}-SNAPSHOT</finalName>
     </build>
 
-    <repositories>
-        <repository>
-            <id>github</id>
-            <url>https://github.com/MerryDev/DigitalDevs-DatabaseUtil</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>github</id>
-            <url>https://github.com/MerryDev/DigitalDevs-CoreAPI</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
