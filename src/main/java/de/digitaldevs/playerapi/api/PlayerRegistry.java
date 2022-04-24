@@ -9,11 +9,17 @@ import java.util.UUID;
 
 public class PlayerRegistry {
 
+    private static final PlayerRegistry playerRegistry = new PlayerRegistry();
+
+    private PlayerRegistry() { this.gamePlayers = new LinkedList<>(); }
+
+    public static final synchronized PlayerRegistry getInstance() {
+        return playerRegistry;
+    }
+
     private final List<GamePlayer> gamePlayers;
 
-    public PlayerRegistry() {
-        this.gamePlayers = new LinkedList<>();
-    }
+
 
     public GamePlayer getPlayerByName(@NotNull final String playerName) {
         return null;
