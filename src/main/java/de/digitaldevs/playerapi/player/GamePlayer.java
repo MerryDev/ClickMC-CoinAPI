@@ -1,5 +1,8 @@
 package de.digitaldevs.playerapi.player;
 
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.UUID;
 
 public interface GamePlayer {
@@ -21,4 +24,6 @@ public interface GamePlayer {
     void unregister();
 
     boolean isRegistered();
+
+    @Nullable Player getBukkitPlayer();
 }

@@ -5,7 +5,9 @@ import de.digitaldevs.database.mysql.MySQLHandler;
 import de.digitaldevs.playerapi.PlayerAPI;
 import de.digitaldevs.playerapi.events.CoinAmountChangeEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.sql.SQLException;
 import java.util.UUID;
@@ -101,6 +103,12 @@ public class GamePlayerImpl implements GamePlayer {
             }
         });
         return isRegistered.get();
+    }
+
+    @Nullable
+    @Override
+    public Player getBukkitPlayer() {
+        return Bukkit.getPlayer(this.getUUID());
     }
 
     private void callCoinAmountChangeEvent(int oldAmount, int newAmount) {
