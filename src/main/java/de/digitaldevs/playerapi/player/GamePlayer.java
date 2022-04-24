@@ -10,4 +10,9 @@ public interface GamePlayer {
 
     int getCoinsAsync();
 
+    void setCoins(int newAmount);
+
+    void addCoins(int addAmount);
+
+    void removeCoins(int removeAmount);
 }
