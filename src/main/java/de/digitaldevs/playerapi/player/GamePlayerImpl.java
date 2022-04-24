@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.SQLException;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GamePlayerImpl implements GamePlayer {
@@ -75,17 +76,31 @@ public class GamePlayerImpl implements GamePlayer {
 
     @Override
     public void register() {
+        if (isRegistered()) return;
+        this.handler.createBuilder("INSERT INTO players (uuid) VALUES (?);").addParameters(this.getUUID()).updateAsync();
+        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?);").addParameters(this.getUUID(), 500).updateAsync();
 
     }
 
     @Override
     public void unregister() {
-
+        if (!isRegistered()) return;
+        this.handler.createBuilder("DELETE FROM players WHERE uuid = (?);").addParameters(this.getUUID()).updateAsync();
+        this.handler.createBuilder("DELETE FROM coins WHERE uuid = (?);").addParameters(this.getUUID()).updateAsync();
     }
 
     @Override
     public boolean isRegistered() {
-        return false;
+        AtomicBoolean isRegistered = new AtomicBoolean(false);
+        this.handler.createBuilder("SELECT * FROM players WHERE uuid=?;").addParameters(this.getUUID()).queryAsync(result -> {
+            if (result == null) return;
+            try {
+                String uuid = result.getString("uuid");
+                if (uuid != null) isRegistered.set(true);
+            } catch (SQLException ignored) {
+            }
+        });
+        return isRegistered.get();
     }
 
     private void callCoinAmountChangeEvent(int oldAmount, int newAmount) {
