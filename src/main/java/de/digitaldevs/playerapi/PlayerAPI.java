@@ -2,6 +2,7 @@ package de.digitaldevs.playerapi;
 
 import de.digitaldevs.database.mysql.MySQLHandler;
 import de.digitaldevs.playerapi.api.PlayerRegistry;
+import de.digitaldevs.playerapi.command.CoinsCommand;
 import de.digitaldevs.playerapi.listener.JoinListener;
 import de.digitaldevs.playerapi.utils.MySQLConfig;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class PlayerAPI extends JavaPlugin {
         if (this.mySQLHandler.isConnected()) {
             this.playerRegistry = PlayerRegistry.getInstance();
             this.registerListener();
+            this.registerCommands();
         }
     }
 
@@ -37,5 +39,9 @@ public class PlayerAPI extends JavaPlugin {
     private void registerListener() {
         final PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new JoinListener(this), this);
+    }
+
+    private void registerCommands() {
+        getCommand("coins").setExecutor(new CoinsCommand(this));
     }
 }
