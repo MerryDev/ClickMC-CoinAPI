@@ -99,6 +99,14 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
+        <repository>
+            <id>github</id>
+            <url>https://github.com/MerryDev/DigitalDevs-CoreAPI</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -116,6 +124,11 @@
             <groupId>com.destroystokyo.paper</groupId>
             <artifactId>paper</artifactId>
             <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>de.digitaldevs</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>de.digitaldevs</groupId>
