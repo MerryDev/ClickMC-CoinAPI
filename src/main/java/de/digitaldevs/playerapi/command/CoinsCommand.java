@@ -35,7 +35,7 @@ public class CoinsCommand implements CommandExecutor {
                 player.sendMessage("§7[§3C§bl§3i§bc§3k§bM§3C§7] §cDa hat wohl was nicht geklappt :(");
                 return true;
             }
-            final int coins = gamePlayer.getCoins();
+            final int coins = gamePlayer.getCoinsAsync();
             player.sendMessage("§7[§3C§bl§3i§bc§3k§bM§3C§7] Du hast aktuell §e" + this.format(coins) + " §7Coins.");
 
         }

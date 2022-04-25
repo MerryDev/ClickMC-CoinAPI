@@ -40,11 +40,13 @@ public class GamePlayerImpl implements GamePlayer {
     @Override
     public int getCoinsAsync() {
         final AtomicInteger amount = new AtomicInteger(0);
-
-        this.handler.createBuilder("SELECT amount FROM coins WHERE uuid=?;").addParameters(this.getUUID()).queryAsync(result -> {
-            if (result == null) return;
+        String uuid = this.getUUID().toString();
+        this.handler.createBuilder("SELECT amount FROM coins WHERE uuid=?;").addParameters(uuid).queryAsync(result -> {
+            if (result == null){
+                System.out.println("HAHAHAHAHA");return;}
             try {
                 int coins = result.getInt("coins");
+                System.out.println(coins+"HEHEHEHEHEHEHE");
                 amount.set(coins);
             } catch (SQLException ignored) {
             }
@@ -56,7 +58,8 @@ public class GamePlayerImpl implements GamePlayer {
     @Override
     public void setCoins(int newAmount) {
         int oldAmount = this.coins;
-        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?) ON DUPLICATE KEY UPDATE amount = ?;").addParameters(this.getUUID(), newAmount, newAmount).updateAsync();
+        String uuid = this.getUUID().toString();
+        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?) ON DUPLICATE KEY UPDATE amount = ?;").addParameters(uuid, newAmount, newAmount).updateAsync();
         this.callCoinAmountChangeEvent(oldAmount, newAmount);
     }
 
@@ -64,7 +67,8 @@ public class GamePlayerImpl implements GamePlayer {
     public void addCoins(int addAmount) {
         int oldAmount = this.coins;
         int newAmount = oldAmount + addAmount;
-        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?) ON DUPLICATE KEY UPDATE amount = ?;").addParameters(this.getUUID(), addAmount, newAmount).updateAsync();
+        String uuid = this.getUUID().toString();
+        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?) ON DUPLICATE KEY UPDATE amount = ?;").addParameters(uuid, addAmount, newAmount).updateAsync();
         this.callCoinAmountChangeEvent(oldAmount, newAmount);
     }
 
@@ -72,29 +76,35 @@ public class GamePlayerImpl implements GamePlayer {
     public void removeCoins(int removeAmount) {
         int oldAmount = this.coins;
         int newAmount = oldAmount - removeAmount;
-        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?) ON DUPLICATE KEY UPDATE amount = ?;").addParameters(this.getUUID(), Math.max(newAmount, 0), newAmount).updateAsync();
+        String uuid = this.getUUID().toString();
+        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?) ON DUPLICATE KEY UPDATE amount = ?;").addParameters(uuid, Math.max(newAmount, 0), newAmount).updateAsync();
         this.callCoinAmountChangeEvent(oldAmount, newAmount);
     }
 
     @Override
     public void register() {
         if (isRegistered()) return;
-        this.handler.createBuilder("INSERT INTO players (uuid) VALUES (?);").addParameters(this.getUUID()).updateAsync();
-        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?);").addParameters(this.getUUID(), 500).updateAsync();
+        String uuid = this.getUUID().toString();
+        this.handler.createBuilder("INSERT INTO players (uuid) VALUES (?);").addParameters(uuid).updateAsync();
+        this.handler.createBuilder("INSERT INTO coins (uuid, amount) VALUES (?, ?);").addParameters(uuid, 500).updateAsync();
+        System.out.println(this.getUUID());
+        System.out.println(this.getUUID().toString());
 
     }
 
     @Override
     public void unregister() {
         if (!isRegistered()) return;
-        this.handler.createBuilder("DELETE FROM players WHERE uuid = (?);").addParameters(this.getUUID()).updateAsync();
-        this.handler.createBuilder("DELETE FROM coins WHERE uuid = (?);").addParameters(this.getUUID()).updateAsync();
+        String uuid = this.getUUID().toString();
+        this.handler.createBuilder("DELETE FROM players WHERE uuid = (?);").addParameters(uuid).updateAsync();
+        this.handler.createBuilder("DELETE FROM coins WHERE uuid = (?);").addParameters(uuid).updateAsync();
     }
 
     @Override
     public boolean isRegistered() {
+        String playerUUID = this.getUUID().toString();
         AtomicBoolean isRegistered = new AtomicBoolean(false);
-        this.handler.createBuilder("SELECT * FROM players WHERE uuid=?;").addParameters(this.getUUID()).queryAsync(result -> {
+        this.handler.createBuilder("SELECT * FROM players WHERE uuid=?;").addParameters(playerUUID).queryAsync(result -> {
             if (result == null) return;
             try {
                 String uuid = result.getString("uuid");
@@ -108,7 +118,8 @@ public class GamePlayerImpl implements GamePlayer {
     @Nullable
     @Override
     public Player getBukkitPlayer() {
-        return Bukkit.getPlayer(this.getUUID());
+        String uuid = this.getUUID().toString();
+        return Bukkit.getPlayer(uuid);
     }
 
     private void callCoinAmountChangeEvent(int oldAmount, int newAmount) {
